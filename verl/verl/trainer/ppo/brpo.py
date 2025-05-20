@@ -99,7 +99,7 @@ def set_training_split_plan(max_gen_len: int, n_budget_support: int, budget_prob
         budget_sum = sum(TRAIN_SPLIT_POINTS)
         TRAIN_BUDGET_PROBS = [l / budget_sum for l in TRAIN_SPLIT_POINTS]
     elif budget_probs == "base":
-        TRAIN_BUDGET_PROBS = [0.01] * (n_budget_support - 1) + [1.0 - 0.01 * (n_budget_support - 1)]
+        TRAIN_BUDGET_PROBS = [0.0] * (n_budget_support - 1) + [1.0 - 0.0 * (n_budget_support - 1)]
     else:
         raise ValueError(f"Unexpected budget_probs: {budget_probs}")
     print(">" * 50)
