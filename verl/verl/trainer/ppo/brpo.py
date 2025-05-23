@@ -1,5 +1,5 @@
-# Copyright 2024 Bytedance Ltd. and/or its affiliates
-# Copyright 2023 The vLLM team.
+# Copyright 2025 Sea AI Lab.
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# Adapted from https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/llm.py
 
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple, Union

@@ -12,3 +12,5 @@ pip3 install -e .
 
 pip3 install antlr4-python3-runtime==4.9.3
 pip3 install tensordict==0.6.2
+pip3 install torch==2.6.0
+pip3 install transformers==4.50.1

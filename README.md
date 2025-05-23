@@ -82,14 +82,10 @@ Run evaluation:
 If you find our works useful for your research, please consider citing:
 
 ```bibtex
-@misc{qi2025optimizinganytimereasoningbudget,
-      title={Optimizing Anytime Reasoning via Budget Relative Policy Optimization}, 
-      author={Penghui Qi and Zichen Liu and Tianyu Pang and Chao Du and Wee Sun Lee and Min Lin},
-      year={2025},
-      eprint={2505.13438},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2505.13438}, 
+@article{qi2025anytimereasoner,
+  title={Optimizing Anytime Reasoning via Budget Relative Policy Optimization},
+  author={Qi, Penghui and Liu, Zichen and Pang, Tianyu and Du, Chao and Lee, Wee Sun and Lin, Min},
+  journal={arXiv preprint arXiv:2505.13438},
+  year={2025}
 }
 ```
-
