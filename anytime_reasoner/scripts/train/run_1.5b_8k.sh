@@ -5,7 +5,7 @@ set -x
 # vLLM without XFORMERS will results in CUDA errors.
 # export VLLM_ATTENTION_BACKEND=XFORMERS
 
-export CUDA_VISIBLE_DEVICES=4,5,6,7
+# export CUDA_VISIBLE_DEVICES=4,5,6,7
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -77,7 +77,7 @@ RAY_DEDUP_LOGS=0 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     trainer.project_name='anytime-reasoning' \
     trainer.experiment_name='8k-train' \
     +trainer.val_before_train=True \
-    trainer.n_gpus_per_node=4 \
+    trainer.n_gpus_per_node=8 \
     trainer.nnodes=1 \
     trainer.save_freq=40 \
     trainer.test_freq=20 \
