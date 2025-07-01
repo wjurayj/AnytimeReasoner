@@ -601,6 +601,7 @@ def compute_summary_advantage(summary_scores, split_id, G, S):
             else:
                 baseline = grpo_id2mean[id_0][sid]
             if get_summary_method() == "grpo":
+                assert A == 1
                 if id_1 == len(summary_scores[id_0]) - 1:
                     adv = summary_scores[id_0, id_1] - baseline
                 else:

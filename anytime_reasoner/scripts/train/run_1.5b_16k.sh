@@ -29,7 +29,7 @@ echo "${@:1}"
 
 # Train over a single node, 8 A100-80GB GPUs.
 RAY_DEDUP_LOGS=0 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
-    algorithm.adv_estimator=budget \
+    algorithm.adv_estimator=grpo \
     data.train_files=$HOME/deepscaler/data/train.parquet \
     data.val_files=[$HOME/deepscaler/data/aime.parquet,$HOME/deepscaler/data/amc.parquet] \
     data.train_batch_size=64 \
