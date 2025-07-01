@@ -853,7 +853,7 @@ class RayPPOTrainer(object):
 
         rollout_conf = self.config.actor_rollout_ref.rollout
         logger = Tracking(project_name=self.config.trainer.project_name,
-                          experiment_name=f"{self.config.trainer.experiment_name}-v{rollout_conf.variance_reduction}-s{rollout_conf.n_summary}-b{rollout_conf.n_budget_support}-{rollout_conf.budget_probs}",
+                          experiment_name=f"{self.config.trainer.experiment_name}_v{rollout_conf.variance_reduction}-s{rollout_conf.n_summary}-b{rollout_conf.n_budget_support}-{rollout_conf.budget_probs}",
                           default_backend=self.config.trainer.logger,
                           config=OmegaConf.to_container(self.config, resolve=True))
 
