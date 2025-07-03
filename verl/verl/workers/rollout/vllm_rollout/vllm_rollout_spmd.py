@@ -116,6 +116,7 @@ class vLLMRollout(BaseRollout):
             max_num_batched_tokens=max_num_batched_tokens,
             enable_chunked_prefill=config.enable_chunked_prefill,
             enable_prefix_caching=True,
+            seed=config.seed,
         )
         self.inference_engine.reward_tokenizer = tokenizer
         self.inference_engine.apply_model(lambda model: print(model.__class__))

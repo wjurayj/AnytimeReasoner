@@ -25,7 +25,9 @@
 
 # 16k
 ## GRPO
-./anytime_reasoner/scripts/train/run_1.5b_16k.sh --model $MODEL_PATH actor_rollout_ref.rollout.n_summary=1 actor_rollout_ref.rollout.summary_method=grpo actor_rollout_ref.rollout.n_budget_support=1 actor_rollout_ref.rollout.budget_probs=base actor_rollout_ref.rollout.variance_reduction=v2only trainer.experiment_name=GRPO
+./anytime_reasoner/scripts/train/run_1.5b_16k.sh --model $MODEL_PATH actor_rollout_ref.rollout.n_summary=1 actor_rollout_ref.rollout.summary_method=grpo actor_rollout_ref.rollout.n_budget_support=1 actor_rollout_ref.rollout.budget_probs=base actor_rollout_ref.rollout.variance_reduction=v2only trainer.experiment_name=16k-GRPO
 
 ## AR-uniform
-./anytime_reasoner/scripts/train/run_1.5b_16k.sh --model $MODEL_PATH actor_rollout_ref.rollout.n_summary=2 actor_rollout_ref.rollout.summary_method=brpo actor_rollout_ref.rollout.n_budget_support=8 actor_rollout_ref.rollout.budget_probs=uniform actor_rollout_ref.rollout.variance_reduction=brpo trainer.experiment_name=AR-uniform
+./anytime_reasoner/scripts/train/run_1.5b_16k.sh --model $MODEL_PATH actor_rollout_ref.rollout.n_summary=2 actor_rollout_ref.rollout.summary_method=brpo actor_rollout_ref.rollout.n_budget_support=8 actor_rollout_ref.rollout.budget_probs=uniform actor_rollout_ref.rollout.variance_reduction=brpo trainer.experiment_name=16k-AR-uniform
+## AR-base
+./anytime_reasoner/scripts/train/run_1.5b_16k.sh --model $MODEL_PATH actor_rollout_ref.rollout.n_summary=2 actor_rollout_ref.rollout.summary_method=brpo actor_rollout_ref.rollout.n_budget_support=8 actor_rollout_ref.rollout.budget_probs=base actor_rollout_ref.rollout.variance_reduction=brpo trainer.experiment_name=16k-AR-base
