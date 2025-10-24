@@ -3,7 +3,7 @@ set -x
 
 # Warning: Export VLLM_ATTENTION_BACKEND on every machine before starting Ray cluster.
 # vLLM without XFORMERS will results in CUDA errors.
-# export VLLM_ATTENTION_BACKEND=XFORMERS
+export VLLM_ATTENTION_BACKEND=XFORMERS
 
 # export CUDA_VISIBLE_DEVICES=4,5,6,7
 
@@ -27,17 +27,19 @@ fi
 
 echo "${@:1}"
 
+DATA_PATH="/weka/scratch/bvandur1/wjurayj1"
+
 # Train over a single node, 8 A100-80GB GPUs.
-RAY_DEDUP_LOGS=0 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
+RAY_DEDUP_LOGS=0 PYTHONUNBUFFERED=1 HYDRA_FULL_ERROR=1 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$HOME/deepscaler/data/train.parquet \
-    data.val_files=[$HOME/deepscaler/data/aime.parquet,$HOME/deepscaler/data/amc.parquet] \
+    data.train_files=$DATA_PATH/deepscaler/data/train.parquet \
+    "data.val_files=[$DATA_PATH/deepscaler/data/aime.parquet,$DATA_PATH/deepscaler/data/amc.parquet]" \
     data.train_batch_size=64 \
     data.val_batch_size=512 \
     data.max_prompt_length=1024 \
     data.max_response_length=10176 \
     data.filter_overlong_prompts=True \
-    actor_rollout_ref.model.path=$MODEL_PATH  \
+    actor_rollout_ref.model.path=$MODEL_PATH \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.attn_implementation=flex_attention \
@@ -73,11 +75,11 @@ RAY_DEDUP_LOGS=0 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
     algorithm.kl_ctrl.kl_coef=0.001 \
     trainer.critic_warmup=0 \
-    trainer.logger=['console','wandb'] \
+    "trainer.logger=['console','wandb']" \
     trainer.project_name='anytime-reasoning' \
     trainer.experiment_name='8k-train' \
     +trainer.val_before_train=True \
-    trainer.n_gpus_per_node=8 \
+    trainer.n_gpus_per_node=4 \
     trainer.nnodes=1 \
     trainer.save_freq=40 \
     trainer.test_freq=20 \

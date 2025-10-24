@@ -36,7 +36,7 @@ def run_ppo(config) -> None:
         # this is for local ray cluster
         logger.info("start to init ray")
         ray.init(
-            num_cpus=64, num_gpus=8, runtime_env={
+            num_cpus=64, num_gpus=4, runtime_env={ ### WHY IS THIS HARD CODED???
                 'env_vars': {
                     'TOKENIZERS_PARALLELISM': 'true',
                     'NCCL_DEBUG': 'WARN',

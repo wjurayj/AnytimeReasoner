@@ -18,7 +18,6 @@ We can subclass Protocol to define more detailed batch info with specific keys
 
 import pickle
 import numpy as np
-import pandas as pd
 import copy
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Union
@@ -27,6 +26,9 @@ import torch
 import tensordict
 from tensordict import TensorDict
 from torch.utils.data import DataLoader, Dataset
+
+import pandas as pd
+
 
 from verl.utils.py_functional import union_two_dict
 
