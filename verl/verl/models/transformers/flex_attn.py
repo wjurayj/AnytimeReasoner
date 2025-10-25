@@ -163,26 +163,26 @@ def flex_attention_forward(
 
 @contextmanager
 def update_flex_attn_impl(permanent: bool = True):
-    from transformers.models.qwen2.modeling_qwen2 import Qwen2Model
+    # from transformers.models.qwen2.modeling_qwen2 import Qwen2Model
     from transformers.modeling_utils import ALL_ATTENTION_FUNCTIONS
     original_impl = ALL_ATTENTION_FUNCTIONS["flex_attention"]
-    original_update_causal_mask = Qwen2Model._update_causal_mask
+    # original_update_causal_mask = Qwen2Model._update_causal_mask
     ALL_ATTENTION_FUNCTIONS["flex_attention"] = flex_attention_forward
-    Qwen2Model._update_causal_mask = _update_causal_mask
+    # Qwen2Model._update_causal_mask = _update_causal_mask
     yield
     if not permanent:
         ALL_ATTENTION_FUNCTIONS["flex_attention"] = original_impl
-        Qwen2Model._update_causal_mask = original_update_causal_mask
+        # Qwen2Model._update_causal_mask = original_update_causal_mask
 
 
-def _update_causal_mask(
-    self,
-    attention_mask: torch.Tensor,
-    input_tensor: torch.Tensor,
-    cache_position: torch.Tensor,
-    past_key_values,
-    output_attentions: bool = False,
-):
-    if self.config._attn_implementation == "flex_attention":
-        return attention_mask
-    raise ValueError("Not supported")
+# def _update_causal_mask(
+#     self,
+#     attention_mask: torch.Tensor,
+#     input_tensor: torch.Tensor,
+#     cache_position: torch.Tensor,
+#     past_key_values,
+#     output_attentions: bool = False,
+# ):
+#     if self.config._attn_implementation == "flex_attention":
+#         return attention_mask
+#     raise ValueError("Not supported")

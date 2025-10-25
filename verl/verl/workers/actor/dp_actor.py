@@ -125,7 +125,9 @@ class DataParallelPPOActor(BasePPOActor):
                     position_ids_rmpad = pad_sequence_to_length(position_ids_rmpad, max_token_len, 0)
                     tree_invalid_slice_rmpad = pad_sequence_to_length(tree_invalid_slice_rmpad, max_token_len, 0)
                     tree_invalid_slice_rmpad = tree_invalid_slice_rmpad.transpose(0, 1).unsqueeze(0)  # [1, total_nnz, 2]
-                    attn_mask = make_flex_block_causal_mask(document_ids, tree_invalid_slice_rmpad)
+                    attn_mask = {
+                        "full_attention": make_flex_block_causal_mask(document_ids, tree_invalid_slice_rmpad),
+                    }
                 output = self.actor_module(input_ids=input_ids_rmpad,
                                             attention_mask=attn_mask,
                                             position_ids=position_ids_rmpad,

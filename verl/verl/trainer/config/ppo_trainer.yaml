@@ -100,6 +100,7 @@ actor_rollout_ref:
     budget_probs: "base"
     summary_method: "brpo"
     variance_reduction: "brpo"
+    seed: 42
     val_kwargs:
       # sampling parameters for validation
       top_k: -1 # 0 for hf rollout, -1 for vllm rollout
