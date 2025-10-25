@@ -1,0 +1,1 @@
+All the business logic is in [brpo.py](verl/verl/trainer/ppo/brpo.py), and the calling of these functions happens in [vllm_rollout_spmd.py](verl/verl/workers/rollout/vllm_rollout/vllm_rollout_spmd.py)
